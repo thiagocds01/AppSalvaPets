@@ -38,7 +38,7 @@ public interface ServiceUsuario {
     Call<Usuario> postUsuario(@Body String usuario);
 
     @Headers("Accept: application/json")
-    @POST("api/usuario/login") // Pode ser necessário ajustar o endpoint
+    @GET("api/usuario/login")
     Call<Usuario> relizarLogin(@Body Usuario usuario);
 }
 

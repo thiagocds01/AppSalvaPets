@@ -38,6 +38,7 @@ public class Usuario {
 
         this.tipoUsuario = tipoUsuario;
 
+
     }
 
 

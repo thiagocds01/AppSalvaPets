@@ -14,6 +14,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,30 +81,44 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         if (usuario.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
-        }
+        }else {
             Usuario user = new Usuario(usuario, senha);
 
-        Call<Usuario> call = serviceUsuario.relizarLogin(user);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                if (response.isSuccessful() && response.body() != null ) {
-                    Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                } else {
-                    Toast.makeText(LoginActivity.this, "Usuário ou senha inválidos!", Toast.LENGTH_SHORT).show();
+            Call<Usuario> call = serviceUsuario.relizarLogin(user);
+            call.enqueue(new Callback<Usuario>() {
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    if (response.isSuccessful()) {
+                        Usuario usuarioLogado = response.body();
+                        // Faça algo com o usuário logado, como salvar os dados em SharedPreferences
+                        Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+
+                        // Inicia a MainActivity
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+
+                        finish(); // Fecha a LoginActivity
+                    } else {
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Toast.makeText(LoginActivity.this, "Erro no login: " + errorBody, Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            Toast.makeText(LoginActivity.this, "Erro no login", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Erro na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
 
 
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+                    t.printStackTrace();
+                    Toast.makeText(LoginActivity.this, "Erro na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
 
-        });
+                }
+
+
+            });
+        }
     }
 
 
