@@ -94,7 +94,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.16.221.124:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -130,7 +130,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                 fotoBase64 = converterParaBase64(bitmap);
 
-                // Exibir a imagem no ImageView
+
                 imageViewFoto.setImageBitmap(bitmap);
 
                 Toast.makeText(this, "Foto carregada com sucesso!", Toast.LENGTH_SHORT).show();
