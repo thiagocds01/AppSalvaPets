@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnOng, btnDenuncia, btnAtualizar;
+    Button  btnDenuncia, btnAtualizar;
 
     private RecyclerView recyclerView;
     private Retrofit retrofit;
@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        btnOng = findViewById(R.id.btnOng);
-        btnOng.setOnClickListener(this);
+
         btnDenuncia = findViewById(R.id.btnDenuncia);
         btnDenuncia.setOnClickListener(this);
         btnAtualizar = findViewById(R.id.btnAtualizar);
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
         }else if (v.getId() == R.id.btnAtualizar) {
-            // Atualizar a lista de pets
+
             carregarPets();
             Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
         }
