@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#4CAF50</color> <!-- Verde -->
+    <color name="on_primary">#FFFFFF</color> <!-- Branco -->
+    <color name="on_green">#20c997</color> <!-- Branco -->
+
 </resources>
