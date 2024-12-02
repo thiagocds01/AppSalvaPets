@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:80/")
+                .baseUrl("http://172.16.222.222:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
