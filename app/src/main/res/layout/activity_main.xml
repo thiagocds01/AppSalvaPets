@@ -28,13 +28,6 @@
         android:background="#EEEEEE">
 
         <Button
-            android:id="@+id/btnOng"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ONG" />
-
-        <Button
             android:id="@+id/btnDenuncia"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,5 +43,6 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 

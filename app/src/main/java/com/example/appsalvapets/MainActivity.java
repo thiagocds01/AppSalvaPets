@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnOng, btnDenuncia, btnAtualizar;
+    Button  btnDenuncia, btnAtualizar;
 
     private RecyclerView recyclerView;
     private Retrofit retrofit;
@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        btnOng = findViewById(R.id.btnOng);
-        btnOng.setOnClickListener(this);
+
         btnDenuncia = findViewById(R.id.btnDenuncia);
         btnDenuncia.setOnClickListener(this);
         btnAtualizar = findViewById(R.id.btnAtualizar);
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.16.221.124:80/")
+                .baseUrl("http://172.16.222.222:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -81,12 +80,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnOng) {
-            OngActivity.startOngActivity(this);
-        } else if (v.getId() == R.id.btnDenuncia) {
+        if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
         }else if (v.getId() == R.id.btnAtualizar) {
-            // Atualizar a lista de pets
+
             carregarPets();
             Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
         }

@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageViewPet"
@@ -23,20 +23,22 @@
             android:id="@+id/textViewPetNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:text="Nome do Pet" />
+            android:text="Nome do Pet"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewPetRaca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Raça" />
+            android:text="Raça"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewPetIdade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Idade" />
+            android:text="Idade"
+            android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>

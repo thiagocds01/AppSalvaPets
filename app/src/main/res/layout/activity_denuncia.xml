@@ -96,7 +96,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@color/on_primary" />
 
         <Button
             android:id="@+id/btnEnviarDenuncia"
