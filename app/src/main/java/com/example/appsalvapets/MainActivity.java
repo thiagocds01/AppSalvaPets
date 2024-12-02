@@ -81,9 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnOng) {
-            OngActivity.startOngActivity(this);
-        } else if (v.getId() == R.id.btnDenuncia) {
+        if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
         }else if (v.getId() == R.id.btnAtualizar) {
             // Atualizar a lista de pets
