@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button  btnDenuncia, btnAtualizar;
+    Button  btnDenuncia, btnAtualizar, btnLogin;
 
     private RecyclerView recyclerView;
     private Retrofit retrofit;
@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDenuncia.setOnClickListener(this);
         btnAtualizar = findViewById(R.id.btnAtualizar);
         btnAtualizar.setOnClickListener(this);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(this);
 
         recyclerView = findViewById(R.id.recyclerViewPets);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.16.222.222:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call<List<Pet>> call, Response<List<Pet>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Pet> pets = response.body();
-                    PetItem adapter = new PetItem(pets, MainActivity.this);
+                    PetItemMain adapter = new PetItemMain(pets, MainActivity.this);
                     recyclerView.setAdapter(adapter);
                 } else {
                     Toast.makeText(MainActivity.this, "Erro ao carregar dados", Toast.LENGTH_SHORT).show();
@@ -87,5 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             carregarPets();
             Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
         }
+        else if  (v.getId() == R.id.btnLogin) {
+            LoginActivity.startLoginActivity(this);
+
+    }
     }
 }
