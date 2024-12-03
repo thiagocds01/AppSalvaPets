@@ -9,7 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/imagem_pet" />
+        android:contentDescription="@string/imagem_pet"  />
 
     <LinearLayout
         android:layout_width="0dp"
