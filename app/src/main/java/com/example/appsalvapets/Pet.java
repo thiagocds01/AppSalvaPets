@@ -2,7 +2,7 @@ package com.example.appsalvapets;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+
 
 public class Pet {
     @SerializedName("id")

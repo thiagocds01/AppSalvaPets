@@ -15,5 +15,5 @@ public interface ServiceLogin {
 
 
     @GET("api/usuario/login")
-    Call<UsuarioLogin> realizarLogin(@Query("username") String username, @Query("password") String password);
+    Call<UsuarioLogin>  realizarLogin(@Query("username") String username, @Query("password") String password);
 }
