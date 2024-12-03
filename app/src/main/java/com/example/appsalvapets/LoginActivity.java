@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     EditText edtUsuario, edtSenha;
     Button btnEntrar;
     private Retrofit retrofit;
-    ServiceUsuario serviceUsuario;
+    ServiceLogin serviceUsuario;
     Context context;
 
     @Override
@@ -55,11 +55,11 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         edtSenha = findViewById(R.id.edtSenha);
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.16.223.90:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        serviceUsuario = retrofit.create(ServiceUsuario.class);
+        serviceUsuario = retrofit.create(ServiceLogin.class);
         context = this;
 
     }
@@ -67,62 +67,50 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
-            if (view.getId() == R.id.btnEntrar){
-                realizarLogin();
-            }
+        if (view.getId() == R.id.btnEntrar) {
+            realizarLogin();
+        }
 
     }
 
     private void realizarLogin() {
-
         String usuario = edtUsuario.getText().toString();
         String senha = edtSenha.getText().toString();
 
         if (usuario.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
-        }else {
-            Usuario user = new Usuario(usuario, senha);
+        }
 
-            Call<Usuario> call = serviceUsuario.relizarLogin(user);
-            call.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    if (response.isSuccessful()) {
-                        Usuario usuarioLogado = response.body();
-                        // Faça algo com o usuário logado, como salvar os dados em SharedPreferences
-                        Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+        UsuarioLogin user = new UsuarioLogin(usuario, senha);
 
-                        // Inicia a MainActivity
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
+        Call<UsuarioLogin> call = serviceUsuario.realizarLogin(user);
+        call.enqueue(new Callback<UsuarioLogin>() {
+            @Override
+            public void onResponse(Call<UsuarioLogin> call, Response<UsuarioLogin> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UsuarioLogin usuarioLogado = response.body();
+                    Toast.makeText(LoginActivity.this, "Login bem-sucedido! Bem-vindo, " + usuarioLogado.getUsername(), Toast.LENGTH_SHORT).show();
 
-                        finish(); // Fecha a LoginActivity
-                    } else {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Toast.makeText(LoginActivity.this, "Erro no login: " + errorBody, Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            Toast.makeText(LoginActivity.this, "Erro no login", Toast.LENGTH_SHORT).show();
-                        }
+                    Intent intent = new Intent(LoginActivity.this, DenunciaActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+
+                    try {
+                        String errorBody = response.errorBody().string();
+                        Toast.makeText(LoginActivity.this, "Erro no login: " + errorBody, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(LoginActivity.this, "Erro ao processar a resposta.", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
 
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-                    t.printStackTrace();
-                    Toast.makeText(LoginActivity.this, "Erro na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-
-                }
-
-
-            });
-        }
+            @Override
+            public void onFailure(Call<UsuarioLogin> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Erro na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
 }
-
-
-
