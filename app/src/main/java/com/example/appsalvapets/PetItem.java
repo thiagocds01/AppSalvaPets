@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class PetItem extends RecyclerView.Adapter<PetItem.PetViewHolder> {
+public class PetItemMain extends RecyclerView.Adapter<PetItemMain.PetViewHolder> {
 
     private List<Pet> pets;
     private Context context;
@@ -24,7 +24,7 @@ public class PetItem extends RecyclerView.Adapter<PetItem.PetViewHolder> {
         void onItemClick(Pet pet);
     }
 
-    public PetItem(List<Pet> pets, Context context) {
+    public PetItemMain(List<Pet> pets, Context context) {
         this.pets = pets;
         this.context = context;
         this.listener = listener;
@@ -33,7 +33,7 @@ public class PetItem extends RecyclerView.Adapter<PetItem.PetViewHolder> {
     @NonNull
     @Override
     public PetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pet_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pet_item_main, parent, false);
         return new PetViewHolder(view);
     }
 
