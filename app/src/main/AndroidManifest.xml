@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppSalvaPets"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PetFormActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
