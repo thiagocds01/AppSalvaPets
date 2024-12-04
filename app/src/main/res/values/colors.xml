@@ -5,5 +5,10 @@
     <color name="primary">#4CAF50</color> <!-- Verde -->
     <color name="on_primary">#FFFFFF</color> <!-- Branco -->
     <color name="on_green">#20c997</color> <!-- Branco -->
+    <color name="primary_color">#84A9AC</color>
+    <color name="secondary_color">#D4F1F4</color>
+    <color name="text_hint_color">#B0BEC5</color>
+    <color name="text_color">#37474F</color>
+    <color name="button_text_color">#FFFFFF</color>
 
 </resources>
