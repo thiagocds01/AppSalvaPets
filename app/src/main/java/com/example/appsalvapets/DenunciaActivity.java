@@ -1,6 +1,7 @@
 package com.example.appsalvapets;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -57,7 +57,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
     private ImageView imageViewFoto;
     private CheckBox checkBoxAbandono, checkBoxMausTratos, checkBoxOutros;
     private Button btnEnviarDenuncia, btnCarregarFoto;
-    ImageButton btnObterLocalizacao;
+    ImageButton btnObterLocalizacao, btnVoltar, btnLogin, btnPet;
     private Retrofit retrofit;
     private ServiceDenuncia service;
     private Context context;
@@ -66,6 +66,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
 
 
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +94,13 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         btnEnviarDenuncia.setOnClickListener(this);
         btnObterLocalizacao.setOnClickListener(this);
         btnCarregarFoto.setOnClickListener(this);
+        btnVoltar = findViewById(R.id.btnVoltar);
+        btnLogin = findViewById(R.id.btnLogin);
+
+
+        btnVoltar.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
+
 
 
         retrofit = new Retrofit.Builder()
@@ -116,6 +124,13 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         } else if (v == btnCarregarFoto) {
             abrirGaleria();
         }
+        else if (v == btnVoltar) {
+            MainActivity.startMainActivity(this);
+        }
+        else if (v == btnLogin) {
+            LoginActivity.startLoginActivity(this);
+        }
+
     }
 
     private void abrirGaleria() {
