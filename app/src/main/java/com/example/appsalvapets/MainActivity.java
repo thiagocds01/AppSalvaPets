@@ -22,8 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    ImageButton btnDenuncia, btnLogin,btnAtualizar;
+    ImageButton btnDenuncia, btnLogin,btnAtualizar, btnPet;
 
     private RecyclerView recyclerView;
     private Retrofit retrofit;
@@ -46,12 +45,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAtualizar.setOnClickListener(this);
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
+        btnPet = findViewById(R.id.btnPet);
+        btnPet.setOnClickListener(this);
 
         recyclerView = findViewById(R.id.recyclerViewPets);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:80/")
+                .baseUrl("http://192.168.0.102:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if  (v.getId() == R.id.btnLogin) {
             LoginActivity.startLoginActivity(this);
 
+    }else if (v.getId() == R.id.btnPet) {
+        PetActivity.startPetActivity(this);
     }
     }
 }

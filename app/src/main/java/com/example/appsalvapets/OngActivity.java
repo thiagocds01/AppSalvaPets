@@ -54,7 +54,7 @@ public class OngActivity extends AppCompatActivity implements View.OnClickListen
         btnVoltarOng.setOnClickListener(this);
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:8089/")
+                .baseUrl("http://192.168.0.102:8089/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

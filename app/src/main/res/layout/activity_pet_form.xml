@@ -5,16 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PetFormActivity">
-    <?xml version="1.0" encoding="utf-8"?>
+    tools:context=".PetActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Salva Pets" />
+
+    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonContainer"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <!-- Título -->
@@ -23,69 +36,71 @@
                 style="@style/TitleTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salva Pets"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Imagem -->
-            <ImageView
-                android:id="@+id/iv_pet_image"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="Imagem do Pet"
-                android:src="@drawable/imagem" />
+                android:text="Salva Pets" />
+
+            <!-- Imagem do Pet -->
+
+            <!-- Botão Carregar Foto -->
 
             <!-- Nome -->
             <EditText
                 android:id="@+id/et_nome"
                 style="@style/InputFieldStyle"
-                android:hint="Nome" />
+                android:hint="Nome: " />
 
             <!-- Raça -->
             <EditText
                 android:id="@+id/et_raca"
                 style="@style/InputFieldStyle"
-                android:hint="Raça" />
+                android:hint="Raça: " />
 
             <!-- Porte -->
             <EditText
                 android:id="@+id/et_porte_raca"
                 style="@style/InputFieldStyle"
-                android:hint="Porte" />
+                android:hint="Porte: " />
 
             <!-- Sexo -->
             <EditText
                 android:id="@+id/et_sexo"
                 style="@style/InputFieldStyle"
-                android:hint="Sexo" />
+                android:hint="Sexo: " />
 
             <!-- Cor -->
             <EditText
                 android:id="@+id/et_cor"
                 style="@style/InputFieldStyle"
-                android:hint="Cor" />
+                android:hint="Cor: " />
 
             <!-- Idade -->
             <EditText
                 android:id="@+id/et_idade"
                 style="@style/InputFieldStyle"
-                android:hint="Idade" />
+                android:hint="Idade: " />
 
             <!-- História -->
             <EditText
                 android:id="@+id/et_historia"
                 style="@style/MultiLineInputStyle"
-                android:hint="História do Pet" />
+                android:hint="História do Pet:" />
 
             <!-- Botões -->
+            <Button
+                android:id="@+id/btn_carregar_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:text="Carregar Foto" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_voltar"
@@ -105,5 +120,57 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <!-- Contêiner para os botões fixos -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnAtualizar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/main_atualizar"
+            android:padding="10dp"
+            android:src="@drawable/baseline_main_atualizar" />
+
+        <ImageButton
+            android:id="@+id/btnDenuncia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/denuncia"
+            android:padding="10dp"
+            android:src="@drawable/baseline_denuncia" />
+
+        <ImageButton
+            android:id="@+id/btnPet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/btnpets"
+            android:padding="10dp"
+            android:src="@drawable/baseline_pets" />
+
+        <ImageButton
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/login"
+            android:padding="10dp"
+            android:src="@drawable/baseline_login_cadastro" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

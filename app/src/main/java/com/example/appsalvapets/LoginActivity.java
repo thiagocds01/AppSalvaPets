@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         edtSenha = findViewById(R.id.edtSenha);
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:80/")
+                .baseUrl("http://192.168.0.102:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
