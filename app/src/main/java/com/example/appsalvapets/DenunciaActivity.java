@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -55,7 +56,8 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
     private TextView textViewLatitude, textViewLongitude;
     private ImageView imageViewFoto;
     private CheckBox checkBoxAbandono, checkBoxMausTratos, checkBoxOutros;
-    private Button btnEnviarDenuncia, btnObterLocalizacao, btnCarregarFoto;
+    private Button btnEnviarDenuncia, btnCarregarFoto;
+    ImageButton btnObterLocalizacao;
     private Retrofit retrofit;
     private ServiceDenuncia service;
     private Context context;

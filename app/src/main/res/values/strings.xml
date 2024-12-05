@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AppSalvaPets</string>
     <string name="imagem_pet" />
+    <string name="login" />
+    <string name="denuncia" />
+    <string name="main_atualizar" />
+    <string name="btnpets" />
+    <string name="add_localizacao" />
 </resources>

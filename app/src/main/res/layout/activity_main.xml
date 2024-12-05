@@ -8,14 +8,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Lista de Pets -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp"
+        app:title="Salva Pets"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/pet_item_main" />
 
     <!-- Contêiner para os botões fixos -->
     <LinearLayout
@@ -25,28 +37,47 @@
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#EEEEEE">
+        android:background="@color/white">
 
-        <Button
-            android:id="@+id/btnDenuncia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Denúncia" />
-
-        <Button
+        <ImageButton
             android:id="@+id/btnAtualizar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Atualizar" />
+            android:src="@drawable/baseline_main_atualizar"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/main_atualizar"
+            android:padding="10dp" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/btnDenuncia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_denuncia"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/denuncia"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/btnPet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_pets"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/btnpets"
+            android:padding="10dp" />
+
+        <ImageButton
             android:id="@+id/btnLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Login" />
+            android:src="@drawable/baseline_login_cadastro"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/login"
+            android:padding="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
