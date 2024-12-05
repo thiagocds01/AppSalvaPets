@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -28,6 +28,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.appsalvapets.R;
+import com.example.appsalvapets.model.Denuncia;
+import com.example.appsalvapets.service.ServiceDenuncia;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;

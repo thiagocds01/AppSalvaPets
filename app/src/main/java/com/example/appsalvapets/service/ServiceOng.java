@@ -1,4 +1,6 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.service;
+
+import com.example.appsalvapets.model.Ong;
 
 import java.util.List;
 

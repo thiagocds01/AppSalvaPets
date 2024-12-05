@@ -1,8 +1,6 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.model;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Arrays;
 
 public class Pet {
     @SerializedName ("id")

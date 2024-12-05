@@ -1,4 +1,6 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.service;
+
+import com.example.appsalvapets.model.Pet;
 
 import retrofit2.Call;
 import retrofit2.http.*;

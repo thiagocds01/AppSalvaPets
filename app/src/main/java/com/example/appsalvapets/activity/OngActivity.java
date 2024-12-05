@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.appsalvapets.R;
+import com.example.appsalvapets.model.Ong;
+import com.example.appsalvapets.service.ServiceOng;
 
 import retrofit2.Call;
 import retrofit2.Callback;

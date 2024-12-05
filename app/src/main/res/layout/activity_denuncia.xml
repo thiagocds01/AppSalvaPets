@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DenunciaActivity">
+    tools:context=".activity.DenunciaActivity">
 
     <!-- Toolbar fixa no topo -->
     <androidx.appcompat.widget.Toolbar

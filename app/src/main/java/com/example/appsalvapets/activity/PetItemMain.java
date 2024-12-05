@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.activity;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.appsalvapets.R;
+import com.example.appsalvapets.model.Pet;
+
 import java.util.List;
 
 public class PetItemMain extends RecyclerView.Adapter<PetItemMain.PetViewHolder> {

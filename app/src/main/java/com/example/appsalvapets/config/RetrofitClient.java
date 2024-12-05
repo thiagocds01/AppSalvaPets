@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.config;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

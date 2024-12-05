@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.model;
 
 import com.google.gson.annotations.SerializedName;
 

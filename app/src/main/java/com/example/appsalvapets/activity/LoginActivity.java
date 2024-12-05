@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.appsalvapets.R;
+import com.example.appsalvapets.model.UsuarioLogin;
+import com.example.appsalvapets.service.ServiceLogin;
 
 import java.io.IOException;
 

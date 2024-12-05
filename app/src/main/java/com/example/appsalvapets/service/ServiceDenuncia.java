@@ -1,6 +1,6 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.service;
 
-import com.example.appsalvapets.Denuncia;
+import com.example.appsalvapets.model.Denuncia;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,15 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appsalvapets.R;
+import com.example.appsalvapets.config.RetrofitClient;
+import com.example.appsalvapets.model.Pet;
+import com.example.appsalvapets.service.PetService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

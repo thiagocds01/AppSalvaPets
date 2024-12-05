@@ -1,4 +1,4 @@
-package com.example.appsalvapets;
+package com.example.appsalvapets.model;
 
 public class UsuarioLogin {
     private String username;
