@@ -10,14 +10,14 @@ public class Usuario {
     private String username;
     private String password;
     private String tipoUsuario;
-    private String ong;
+    private Long ong;
 
 
     public Usuario(){
 
     }
 
-    public Usuario(String usuario, String senha, String tipoUsuario, String Ong){
+    public Usuario(String usuario, String senha, String tipoUsuario, Long Ong){
         this.username = usuario;
         this.password = senha;
         this.tipoUsuario = tipoUsuario;
@@ -56,11 +56,11 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String getOng() {
+    public Long getOng() {
         return ong;
     }
 
-    public void setOng(String ong) {
+    public void setOng(Long ong) {
         this.ong = ong;
     }
 

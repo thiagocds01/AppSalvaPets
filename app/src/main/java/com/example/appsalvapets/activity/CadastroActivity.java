@@ -51,6 +51,8 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     private ServiceCadastro serviceCadastro;
     private TextView txtSeleOng;
     ImageButton btnVoltar, btnDenuncia, btnPet;
+    private List<Ong> ongs;
+
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -139,12 +141,30 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         serviceCadastro.getAllOngs().enqueue(new Callback<List<Ong>>() {
             @Override
             public void onResponse(Call<List<Ong>> call, Response<List<Ong>> response) {
-                if (response.isSuccessful() && response.body() != null){
-            ArrayAdapter<Ong> adapter = new ArrayAdapter<>(CadastroActivity.this,
-                    android.R.layout.simple_spinner_item, response.body());
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spnSeleOng.setAdapter(adapter);
-                Toast.makeText(CadastroActivity.this, "Sucesso ao carregar ONGs", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null) {
+                    ongs = response.body();
+
+                    // Cria um ArrayAdapter que exibe o nome da ONG
+                    ArrayAdapter<Ong> adapter = new ArrayAdapter<>(CadastroActivity.this,
+                            android.R.layout.simple_spinner_item, ongs);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spnSeleOng.setAdapter(adapter);
+
+                    // Define um OnItemSelectedListener para capturar a ONG selecionada
+                    spnSeleOng.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            Ong ongSelecionada = (Ong) parent.getItemAtPosition(position);
+                            // Aqui você pode acessar o ID da ONG selecionada: ongSelecionada.getId()
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            Toast.makeText(CadastroActivity.this, "Ong Não selecionada", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    Toast.makeText(CadastroActivity.this, "Sucesso ao carregar ONGs", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -152,7 +172,9 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             public void onFailure(Call<List<Ong>> call, Throwable t) {
                 Toast.makeText(CadastroActivity.this, "Erro ao carregar ONGs", Toast.LENGTH_SHORT).show();
             }
+
         });
+
     }
     private void registrarUsuario() {
         String username = edtCadUsuario.getText().toString();
@@ -165,7 +187,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
         }
-        Usuario usuario = new Usuario(username, password, tipoUsuario.name(), ong);
+        Long ongId = null;
+        if (spnSeleOng.getVisibility() == View.VISIBLE && spnSeleOng.getSelectedItem() != null) {
+            Ong ongSelecionada = (Ong) spnSeleOng.getSelectedItem();
+            ongId = ongSelecionada.getId(); // Obtém o ID da ONG selecionada
+        }
+
+
+        Usuario usuario = new Usuario(username, password, tipoUsuario.name(), ongId);
         serviceCadastro.createUsuario(usuario).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
