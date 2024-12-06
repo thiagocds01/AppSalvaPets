@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     private Usuario usuario;
     private ServiceCadastro serviceCadastro;
     private TextView txtSeleOng;
+    ImageButton btnVoltar, btnDenuncia, btnPet;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -70,11 +72,16 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         btnCadUsuario.setOnClickListener(this);
         btnCadCancelar = findViewById(R.id.btnCadCancelar);
         btnCadCancelar.setOnClickListener(this);
+        btnVoltar = findViewById(R.id.btnVoltar);
+        btnDenuncia = findViewById(R.id.btnDenuncia);
+        btnVoltar.setOnClickListener(this);
+        btnDenuncia.setOnClickListener(this);
+
 
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.113:80/")
+                .baseUrl("http://192.168.0.107:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -96,6 +103,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             finish();
 
         }
+        else if (v.getId() == R.id.btnVoltar) {
+            Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else if (v.getId() == R.id.btnDenuncia) {
+            DenunciaActivity.startDenunciaActivity(this);
+        }
 
     }
 
@@ -108,11 +123,11 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             spnSeleOng.setVisibility(View.VISIBLE);
             txtSeleOng.setVisibility(View.VISIBLE);
             carregarOngs();
-        }else {
+        }else if (selecionado == TipoUsuario.PESSOA_FISICA) {
             spnSeleOng.setVisibility(View.GONE);
             txtSeleOng.setVisibility(View.GONE);
-
         }
+
     }
 
 
