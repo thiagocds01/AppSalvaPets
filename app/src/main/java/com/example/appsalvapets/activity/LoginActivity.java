@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
 
     EditText edtUsuario, edtSenha;
-    Button btnEntrar;
+    Button btnEntrar, btnCadastrarUsuario;
     private Retrofit retrofit;
     ServiceLogin serviceUsuario;
     Context context;
@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
         btnEntrar = findViewById(R.id.btnEntrar);
         btnEntrar.setOnClickListener(this);
+        btnCadastrarUsuario = findViewById(R.id.btnCadastrarUsuario);
+        btnCadastrarUsuario.setOnClickListener(this);
         edtUsuario = findViewById(R.id.edtUsuario);
         edtSenha = findViewById(R.id.edtSenha);
         btnVoltar = findViewById(R.id.btnVoltar);
@@ -82,6 +84,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
         if (view.getId() == R.id.btnEntrar) {
             realizarLogin();
+        }else if (view.getId() == R.id.btnCadastrarUsuario) {
+            CadastroActivity.startCadastroActivity(this);
         }
 
         else if (view.getId() == R.id.btnVoltar) {
