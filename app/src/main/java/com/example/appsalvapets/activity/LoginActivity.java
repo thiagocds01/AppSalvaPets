@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     private Retrofit retrofit;
     ServiceLogin serviceUsuario;
     Context context;
+    ImageButton  btnVoltar, btnDenuncia, btnPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,16 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         btnEntrar.setOnClickListener(this);
         edtUsuario = findViewById(R.id.edtUsuario);
         edtSenha = findViewById(R.id.edtSenha);
+        btnVoltar = findViewById(R.id.btnVoltar);
+        btnDenuncia = findViewById(R.id.btnDenuncia);
+
+
+        btnVoltar.setOnClickListener(this);
+        btnDenuncia.setOnClickListener(this);
+
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:80/")
+                .baseUrl("http://192.168.0.107:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -74,6 +83,16 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         if (view.getId() == R.id.btnEntrar) {
             realizarLogin();
         }
+
+        else if (view.getId() == R.id.btnVoltar) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else if (view.getId() == R.id.btnDenuncia) {
+            DenunciaActivity.startDenunciaActivity(this);
+        }
+
 
     }
 
