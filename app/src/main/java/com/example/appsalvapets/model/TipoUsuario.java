@@ -1,4 +1,7 @@
 package com.example.appsalvapets.model;
 
-public class TipoUsuario {
+public enum TipoUsuario {
+
+    PESSOA_FISICA,
+    ONG;
 }
