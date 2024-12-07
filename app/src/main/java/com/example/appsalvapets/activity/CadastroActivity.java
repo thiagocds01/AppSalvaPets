@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -52,6 +53,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     private TextView txtSeleOng;
     ImageButton btnVoltar, btnDenuncia, btnPet;
     private List<Ong> ongs;
+
 
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -165,12 +167,16 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
                     });
 
                     Toast.makeText(CadastroActivity.this, "Sucesso ao carregar ONGs", Toast.LENGTH_SHORT).show();
+                    Log.d("CadastroActivity", "ONGs carregadas com sucesso: " + ongs);
+                } else {
+                    Log.e("CadastroActivity", "Erro ao carregar ONGs: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Ong>> call, Throwable t) {
-                Toast.makeText(CadastroActivity.this, "Erro ao carregar ONGs", Toast.LENGTH_SHORT).show();
+                Log.e("CadastroActivity", "Falha na requisição: " + t.getMessage());
+
             }
 
         });
@@ -187,10 +193,10 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
         }
-        Long ongId = null;
+        Ong ongId = null;
         if (spnSeleOng.getVisibility() == View.VISIBLE && spnSeleOng.getSelectedItem() != null) {
             Ong ongSelecionada = (Ong) spnSeleOng.getSelectedItem();
-            ongId = ongSelecionada.getId(); // Obtém o ID da ONG selecionada
+            ongId.setId(ongSelecionada.getId());
         }
 
 
