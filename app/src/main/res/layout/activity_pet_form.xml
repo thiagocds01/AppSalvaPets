@@ -1,176 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PetActivity">
+    android:padding="16dp">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="Salva Pets" />
 
-    <!-- Scrollable Content -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonContainer"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <!-- Título -->
-            <TextView
-                android:id="@+id/tv_title"
-                style="@style/TitleTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:text="Salva Pets" />
-
-            <!-- Imagem do Pet -->
-
-            <!-- Botão Carregar Foto -->
-
-            <!-- Nome -->
-            <EditText
-                android:id="@+id/et_nome"
-                style="@style/InputFieldStyle"
-                android:hint="Nome: " />
-
-            <!-- Raça -->
-            <EditText
-                android:id="@+id/et_raca"
-                style="@style/InputFieldStyle"
-                android:hint="Raça: " />
-
-            <!-- Porte -->
-            <EditText
-                android:id="@+id/et_porte_raca"
-                style="@style/InputFieldStyle"
-                android:hint="Porte: " />
-
-            <!-- Sexo -->
-            <EditText
-                android:id="@+id/et_sexo"
-                style="@style/InputFieldStyle"
-                android:hint="Sexo: " />
-
-            <!-- Cor -->
-            <EditText
-                android:id="@+id/et_cor"
-                style="@style/InputFieldStyle"
-                android:hint="Cor: " />
-
-            <!-- Idade -->
-            <EditText
-                android:id="@+id/et_idade"
-                style="@style/InputFieldStyle"
-                android:hint="Idade: " />
-
-            <!-- História -->
-            <EditText
-                android:id="@+id/et_historia"
-                style="@style/MultiLineInputStyle"
-                android:hint="História do Pet:" />
-
-            <!-- Botões -->
-            <Button
-                android:id="@+id/btn_carregar_foto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:text="Carregar Foto" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_voltar"
-                    style="@style/ButtonStyle"
-                    android:text="Voltar" />
-
-                <Button
-                    android:id="@+id/btn_editar"
-                    style="@style/ButtonStyle"
-                    android:text="Editar" />
-
-                <Button
-                    android:id="@+id/btn_salvar"
-                    style="@style/ButtonStyle"
-                    android:text="Salvar" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- Contêiner para os botões fixos -->
     <LinearLayout
-        android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btnAtualizar"
-            android:layout_width="0dp"
+
+
+        <!-- Campo Nome -->
+        <EditText
+            android:id="@+id/et_nome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/main_atualizar"
-            android:padding="10dp"
-            android:src="@drawable/baseline_main_atualizar" />
+            android:hint="Nome"
+            android:inputType="textPersonName" />
 
-        <ImageButton
-            android:id="@+id/btnDenuncia"
-            android:layout_width="0dp"
+        <!-- Campo Raça -->
+        <EditText
+            android:id="@+id/et_raca"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/denuncia"
-            android:padding="10dp"
-            android:src="@drawable/baseline_denuncia" />
+            android:hint="Raça"
+            android:inputType="text" />
 
-        <ImageButton
-            android:id="@+id/btnPet"
-            android:layout_width="0dp"
+        <!-- Campo Porte da Raça -->
+        <EditText
+            android:id="@+id/et_porte_raca"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/btnpets"
-            android:padding="10dp"
-            android:src="@drawable/baseline_pets" />
+            android:hint="Porte da Raça"
+            android:inputType="text" />
 
-        <ImageButton
-            android:id="@+id/btnLogin"
-            android:layout_width="0dp"
+        <!-- Campo Sexo -->
+        <EditText
+            android:id="@+id/et_sexo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/login"
-            android:padding="10dp"
-            android:src="@drawable/baseline_login_cadastro" />
+            android:hint="Sexo"
+            android:inputType="text" />
 
+        <!-- Campo Cor -->
+        <EditText
+            android:id="@+id/et_cor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cor"
+            android:inputType="text" />
+
+        <!-- Campo Idade -->
+        <EditText
+            android:id="@+id/et_idade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Idade"
+            android:inputType="number" />
+
+        <!-- Campo História -->
+        <EditText
+            android:id="@+id/et_historia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="História"
+            android:inputType="textMultiLine"
+            android:minLines="3" />
+
+        <!-- Imagem do Pet -->
+        <ImageView
+            android:id="@+id/iv_pet_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Imagem do Pet"
+            android:layout_marginTop="16dp"
+            />
+
+        <!-- Botão Carregar Foto -->
+        <Button
+            android:id="@+id/btn_carregar_foto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carregar Foto"
+            android:layout_marginTop="8dp" />
+
+        <!-- Botão Salvar -->
+        <Button
+            android:id="@+id/btn_salvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:layout_marginTop="8dp" />
+
+        <!-- Botão Editar -->
+        <Button
+            android:id="@+id/btn_editar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:layout_marginTop="8dp" />
+
+        <!-- Botão Deletar -->
+        <Button
+            android:id="@+id/btn_deletar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deletar"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF0000"
+            android:textColor="#FFFFFF" />
+
+        <!-- Botão Voltar -->
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

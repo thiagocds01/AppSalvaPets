@@ -1,5 +1,7 @@
 package com.example.appsalvapets.service;
 
+
+
 import com.example.appsalvapets.model.Pet;
 
 import retrofit2.Call;
@@ -23,4 +25,10 @@ public interface PetService {
 
     @DELETE("api/pets/{id}")
     Call<Void> deletePet(@Path("id") long id);
+
+
+
+    @GET("api/pets")
+    Call<List<Pet>> getAllPets();
+
 }

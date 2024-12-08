@@ -24,6 +24,8 @@
             android:name=".activity.PetActivity"
             android:exported="false" />
 
+        <activity android:name=".activity.PetListActivity"
+            android:exported="false" />
 
         <activity
             android:name=".activity.LoginActivity"

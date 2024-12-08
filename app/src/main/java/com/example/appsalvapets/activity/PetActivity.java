@@ -1,5 +1,6 @@
 package com.example.appsalvapets.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,48 +11,63 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appsalvapets.R;
-import com.example.appsalvapets.config.RetrofitClient;
 import com.example.appsalvapets.model.Pet;
 import com.example.appsalvapets.service.PetService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PetActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_PICK = 1;
 
     private EditText etNome, etRaca, etPorteRaca, etSexo, etCor, etIdade, etHistoria;
-    private Button btnVoltar, btnEditar, btnSalvar, btnCarregarFoto;
+    private ImageView ivPetImage;
+    private Button btnVoltar, btnEditar, btnSalvar, btnCarregarFoto, btnDeletar;
 
     private PetService petService;
-    private Pet currentPet; // Pet atual durante edição
-    private String fotoBase64; // Base64 da imagem carregada
-    private boolean isEditMode = false; // Controla se estamos editando ou criando um pet
+    private Pet currentPet;
+    private String fotoBase64;
+    private boolean isEditMode = false;
+
+    public static void startPetActivity(Context context, long petId) {
+        Intent intent = new Intent(context, PetActivity.class);
+        intent.putExtra("PET_ID", petId);
+        context.startActivity(intent);
+    }
 
     public static void startPetActivity(Context context) {
         Intent intent = new Intent(context, PetActivity.class);
         context.startActivity(intent);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_form);
 
-        // Inicializar Retrofit
-        petService = RetrofitClient.getRetrofitInstance().create(PetService.class);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.100.74:80/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        petService = retrofit.create(PetService.class);
+        PetActivity context = this;
+
 
         // Vincular componentes do layout
         etNome = findViewById(R.id.et_nome);
@@ -61,10 +77,12 @@ public class PetActivity extends AppCompatActivity {
         etCor = findViewById(R.id.et_cor);
         etIdade = findViewById(R.id.et_idade);
         etHistoria = findViewById(R.id.et_historia);
+        ivPetImage = findViewById(R.id.iv_pet_image);
         btnVoltar = findViewById(R.id.btn_voltar);
         btnEditar = findViewById(R.id.btn_editar);
         btnSalvar = findViewById(R.id.btn_salvar);
         btnCarregarFoto = findViewById(R.id.btn_carregar_foto);
+        btnDeletar = findViewById(R.id.btn_deletar);
 
         // Configurar ações dos botões
         btnVoltar.setOnClickListener(view -> finish());
@@ -77,13 +95,18 @@ public class PetActivity extends AppCompatActivity {
             }
         });
         btnCarregarFoto.setOnClickListener(view -> abrirGaleria());
+        btnDeletar.setOnClickListener(view -> {
+            if (currentPet != null) {
+                deletePet(currentPet.getId());
+            }
+        });
 
         // Verificar se estamos em modo de edição
         long petId = getIntent().getLongExtra("PET_ID", -1);
         if (petId != -1) {
             loadPetDetails(petId);
         } else {
-            enableFields(true); // Habilitar campos para criação
+            enableFields(true);
         }
     }
 
@@ -100,9 +123,7 @@ public class PetActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                 fotoBase64 = converterParaBase64(bitmap);
-
-                // Exibir a imagem carregada
-                Toast.makeText(this, "Foto carregada com sucesso!", Toast.LENGTH_SHORT).show();
+                ivPetImage.setImageBitmap(bitmap);
             } catch (IOException e) {
                 Toast.makeText(this, "Erro ao carregar a foto.", Toast.LENGTH_SHORT).show();
             }
@@ -134,6 +155,7 @@ public class PetActivity extends AppCompatActivity {
                     currentPet = response.body();
                     populateFields(currentPet);
                     enableFields(false);
+                    isEditMode = true;
                 } else {
                     Toast.makeText(PetActivity.this, "Erro ao carregar pet", Toast.LENGTH_SHORT).show();
                 }
@@ -158,7 +180,7 @@ public class PetActivity extends AppCompatActivity {
         if (pet.getImagemBase64() != null) {
             byte[] imageBytes = Base64.decode(pet.getImagemBase64(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-//            ivPetImage.setImageBitmap(bitmap);
+            ivPetImage.setImageBitmap(bitmap);
         }
     }
 
@@ -171,29 +193,31 @@ public class PetActivity extends AppCompatActivity {
         pet.setCor(etCor.getText().toString());
         pet.setIdade(Integer.parseInt(etIdade.getText().toString()));
         pet.setHistoria(etHistoria.getText().toString());
-        pet.setImagemBase64(Arrays.toString(fotoBase64.getBytes()));
+        pet.setImagemBase64(fotoBase64); // Certifique-se de que a imagem foi carregada
 
         petService.createPet(pet).enqueue(new Callback<Pet>() {
             @Override
             public void onResponse(Call<Pet> call, Response<Pet> response) {
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful()) {
                     Toast.makeText(PetActivity.this, "Pet criado com sucesso!", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(PetActivity.this, "Erro ao criar pet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PetActivity.this, "Erro ao criar pet: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Pet> call, Throwable t) {
-                Toast.makeText(PetActivity.this, "Erro de conexão", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PetActivity.this, "Falha: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+
     private void updatePet() {
         if (currentPet == null) return;
 
+        // Atualizar os campos
         currentPet.setNome(etNome.getText().toString());
         currentPet.setRaca(etRaca.getText().toString());
         currentPet.setPorteRaca(etPorteRaca.getText().toString());
@@ -201,8 +225,13 @@ public class PetActivity extends AppCompatActivity {
         currentPet.setCor(etCor.getText().toString());
         currentPet.setIdade(Integer.parseInt(etIdade.getText().toString()));
         currentPet.setHistoria(etHistoria.getText().toString());
-        currentPet.setImagemBase64(Arrays.toString(fotoBase64.getBytes()));
 
+        // Verificar se uma nova foto foi carregada
+        if (fotoBase64 != null && !fotoBase64.isEmpty()) {
+            currentPet.setImagemBase64(fotoBase64); // Atualizar com a nova imagem
+        }
+
+        // Enviar a requisição para atualizar o pet
         petService.updatePet(currentPet.getId(), currentPet).enqueue(new Callback<Pet>() {
             @Override
             public void onResponse(Call<Pet> call, Response<Pet> response) {
@@ -210,12 +239,32 @@ public class PetActivity extends AppCompatActivity {
                     Toast.makeText(PetActivity.this, "Pet atualizado com sucesso!", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(PetActivity.this, "Erro ao atualizar pet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PetActivity.this, "Erro ao atualizar pet: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Pet> call, Throwable t) {
+                Toast.makeText(PetActivity.this, "Falha: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void deletePet(long petId) {
+        petService.deletePet(petId).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(PetActivity.this, "Pet excluído com sucesso!", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(PetActivity.this, "Erro ao excluir pet", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(PetActivity.this, "Erro de conexão", Toast.LENGTH_SHORT).show();
             }
         });
