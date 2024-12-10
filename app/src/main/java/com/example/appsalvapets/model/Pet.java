@@ -1,30 +1,31 @@
 package com.example.appsalvapets.model;
 
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class Pet {
-    @SerializedName ("id")
+public class Pet implements Serializable {
+    @SerializedName("id")
     private Long id;
 
-    @SerializedName ("nome")
+    @SerializedName("nome")
     private String nome;
 
-    @SerializedName ("raca")
+    @SerializedName("raca")
     private String raca;
 
-    @SerializedName ("porteRaca")
+    @SerializedName("porteRaca")
     private String porteRaca;
 
-    @SerializedName ("sexo")
+    @SerializedName("sexo")
     private String sexo;
 
-    @SerializedName ("cor")
+    @SerializedName("cor")
     private String cor;
 
-    @SerializedName ("idade")
+    @SerializedName("idade")
     private int idade;
 
-    @SerializedName ("historia")
+    @SerializedName("historia")
     private String historia;
 
     @SerializedName("imagem")
@@ -98,8 +99,13 @@ public class Pet {
         this.historia = historia;
     }
 
-    public String getImagemBase64() { return imagemBase64; }
-    public void setImagemBase64(String imagemBase64) { this.imagemBase64 = imagemBase64; }
+    public String getImagemBase64() {
+        return imagemBase64;
+    }
+
+    public void setImagemBase64(String imagemBase64) {
+        this.imagemBase64 = imagemBase64;
+    }
 
     @Override
     public String toString() {

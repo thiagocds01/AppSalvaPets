@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.107:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                     UsuarioLogin usuarioLogado = response.body();
                     Toast.makeText(LoginActivity.this, "Login bem-sucedido! Bem-vindo, " + usuarioLogado.getUsername(), Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(LoginActivity.this, DenunciaActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

@@ -30,6 +30,8 @@
         <activity
             android:name=".activity.LoginActivity"
             android:exported="false" />
+        <activity android:name=".activity.DetalhesPetActivity"
+            android:exported="false" />
 
 
         <activity

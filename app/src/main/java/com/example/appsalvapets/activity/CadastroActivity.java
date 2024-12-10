@@ -85,7 +85,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.107:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

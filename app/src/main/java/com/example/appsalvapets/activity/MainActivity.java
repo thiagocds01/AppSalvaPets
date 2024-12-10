@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btnDenuncia, btnLogin,btnAtualizar, btnPet;
+    ImageButton btnDenuncia, btnLogin, btnAtualizar, btnPet;
 
     private RecyclerView recyclerView;
     private Retrofit retrofit;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -98,16 +98,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
-        }else if (v.getId() == R.id.btnAtualizar) {
+        } else if (v.getId() == R.id.btnAtualizar) {
 
             carregarPets();
             Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
-        }
-        else if  (v.getId() == R.id.btnLogin) {
+        } else if (v.getId() == R.id.btnLogin) {
             LoginActivity.startLoginActivity(this);
-
-    }else if (v.getId() == R.id.btnPet) {
-        PetActivity.startPetActivity(this);
-    }
+        }
+        else if (v.getId() == R.id.btnPet) {
+            PetListActivity.startPetListActivity(this);
+        }
     }
 }
