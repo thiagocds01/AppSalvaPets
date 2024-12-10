@@ -60,13 +60,12 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
     private ImageView imageViewFoto;
     private CheckBox checkBoxAbandono, checkBoxMausTratos, checkBoxOutros;
     private Button btnEnviarDenuncia, btnCarregarFoto;
-    ImageButton btnObterLocalizacao, btnVoltar, btnLogin, btnPet;
+    ImageButton btnObterLocalizacao, btnDenuncia, btnLogin, btnAtualizar, btnPet;
     private Retrofit retrofit;
     private ServiceDenuncia service;
     private Context context;
     private String fotoBase64;
     private FusedLocationProviderClient fusedLocationProviderClient;
-
 
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -97,12 +96,16 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         btnEnviarDenuncia.setOnClickListener(this);
         btnObterLocalizacao.setOnClickListener(this);
         btnCarregarFoto.setOnClickListener(this);
-        btnVoltar = findViewById(R.id.btnVoltar);
+        btnDenuncia = findViewById(R.id.btnDenuncia);
+        btnDenuncia.setOnClickListener(this);
+        btnAtualizar = findViewById(R.id.btnAtualizar);
+        btnAtualizar.setOnClickListener(this);
         btnLogin = findViewById(R.id.btnLogin);
-
-
-        btnVoltar.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        btnPet = findViewById(R.id.btnPet);
+        btnPet.setOnClickListener(this);
+
+
 
 
 
@@ -127,11 +130,18 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         } else if (v == btnCarregarFoto) {
             abrirGaleria();
         }
-        else if (v == btnVoltar) {
-            MainActivity.startMainActivity(this);
+        else if (v.getId() == R.id.btnDenuncia) {
+            DenunciaActivity.startDenunciaActivity(this);
         }
-        else if (v == btnLogin) {
+        else if (v.getId() == R.id.btnAtualizar) {
+            MainActivity.startMainActivity(this);
+            Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
+        }
+        else if  (v.getId() == R.id.btnLogin) {
             LoginActivity.startLoginActivity(this);
+        }
+        else if (v.getId() == R.id.btnPet) {
+            PetActivity.startPetActivity(this);
         }
 
     }

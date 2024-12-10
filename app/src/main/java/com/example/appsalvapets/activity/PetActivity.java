@@ -286,7 +286,6 @@ public class PetActivity extends AppCompatActivity implements View.OnClickListen
         if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
         }else if (v.getId() == R.id.btnAtualizar) {
-
             MainActivity.startMainActivity(this);
             Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
         }
