@@ -11,11 +11,11 @@
 
     <ImageView
         android:id="@+id/imageViewPet"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop"
+        android:layout_width="102dp"
+        android:layout_height="110dp"
         android:background="@drawable/corner_imagens"
-        android:contentDescription="@string/imagem_pet"  />
+        android:contentDescription="@string/imagem_pet"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -58,8 +58,8 @@
 
         <Button
             android:id="@+id/btnAdotar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="179dp"
+            android:layout_height="38dp"
             android:text="Quero Adotar" />
 
 
