@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"
-        app:title="Salva Pets"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:logo="@drawable/baseline_pets"
+        app:title="Salva Pets" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -44,10 +45,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/baseline_main_atualizar"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/main_atualizar"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:background="@drawable/corner_menu"
+            android:src="@drawable/baseline_main_atualizar" />
 
         <ImageButton
             android:id="@+id/btnDenuncia"

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="14dp"
-    android:background="@color/white"
+    android:background="@drawable/corner_cards"
     android:elevation="4dp"
     android:layout_margin="8dp"
     android:clipToPadding="false">
@@ -14,6 +14,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/corner_imagens"
         android:contentDescription="@string/imagem_pet"  />
 
     <LinearLayout

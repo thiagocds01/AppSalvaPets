@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="14dp"
+    android:background="@drawable/corner_cards"
+    android:elevation="4dp"
+    android:layout_margin="8dp"
+    android:clipToPadding="false">
 
     <!-- Imagem do Pet -->
     <ImageView
@@ -11,6 +15,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/corner_imagens"
         android:contentDescription="Imagem do Pet" />
 
     <!-- Detalhes do Pet -->
@@ -44,6 +49,7 @@
     <Button
         android:id="@+id/btnEditar"
         android:layout_width="wrap_content"
+        android:layout_margin="4dp"
         android:layout_height="wrap_content"
         android:text="Editar" />
 
@@ -51,6 +57,7 @@
         android:id="@+id/btnDeletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="Deletar"
         android:backgroundTint="#FF0000"
         android:textColor="#FFFFFF" />
