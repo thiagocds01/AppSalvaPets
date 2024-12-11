@@ -40,7 +40,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/corner_cards"
         android:hint="Digite sua senha"
-        android:inputType="TextPassword"
+        android:inputType="textPassword"
         android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@id/edtUsuario" />
 
