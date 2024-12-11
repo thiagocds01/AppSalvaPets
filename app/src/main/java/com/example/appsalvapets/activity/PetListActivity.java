@@ -59,7 +59,7 @@ public class PetListActivity extends AppCompatActivity implements View.OnClickLi
 
         // Configurar Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:80/")
+                .baseUrl("http://192.168.100.74:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         petService = retrofit.create(PetService.class);
