@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -14,119 +13,118 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"
-        app:logo="@drawable/baseline_pets"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
+        app:logo="@drawable/baseline_pets"
         app:title="  Cadastro - Salva Pets" />
 
-    <EditText
-        android:id="@+id/edtCadUsuario"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+    <LinearLayout
+        android:id="@+id/campos_login_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:background="@drawable/corner_cards"
-        android:hint="Informe seu nome de usuário"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="149dp" />
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    <EditText
-        android:id="@+id/edtCadSenha"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:background="@drawable/corner_cards"
-        android:inputType="text"
-        android:hint="Informe sua senha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="211dp" />
+        <EditText
+            android:id="@+id/edtCadUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/corner_cards"
+            android:hint="Informe seu nome de usuário"
+            android:inputType="text"
+            android:padding="8dp" />
 
-    <TextView
-        android:id="@+id/txtTipoUsuario"
+        <EditText
+            android:id="@+id/edtCadSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/corner_cards"
+            android:hint="Informe sua senha"
+            android:inputType="text"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/txtTipoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Tipo de Usuário:" />
+
+        <Spinner
+            android:id="@+id/spnTipoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/corner_cards"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/txtSeleOng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Selecione a ONG:"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/spnSeleOng"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Tipo de Usuário:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtCadSenha"
-        android:layout_marginStart="16dp" />
-
-    <Spinner
-        android:id="@+id/spnTipoUsuario"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:background="@drawable/corner_cards"
+        android:layout_marginTop="31dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTipoUsuario" />
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/campos_login_senha">
 
-    <TextView
-        android:id="@+id/txtSeleOng"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Selecione a ONG:"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spnTipoUsuario"
-        android:layout_marginStart="16dp" />
+        <Button
+            android:id="@+id/btnCadUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#304FFC"
+            android:text="Cadastrar" />
 
-    <Spinner
-        android:id="@+id/spnSeleOng"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtSeleOng" />
-
-    <Button
-        android:id="@+id/btnCadUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Cadastrar"
-        android:backgroundTint="#304FFC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spnSeleOng" />
-
-    <Button
-        android:id="@+id/btnCadCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Cancelar"
-        android:backgroundTint="#404040"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCadUsuario" />
+        <Button
+            android:id="@+id/btnCadCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#404040"
+            android:text="Cancelar" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
@@ -134,9 +132,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/main_atualizar"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_voltar_home" />
 
         <ImageButton
@@ -144,9 +142,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/denuncia"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_denuncia" />
 
         <ImageButton
@@ -154,9 +152,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/btnpets"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_pets" />
 
     </LinearLayout>
