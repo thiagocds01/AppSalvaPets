@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +47,15 @@ public class PetListActivity extends AppCompatActivity implements View.OnClickLi
         // Configurar RecyclerView
         recyclerView = findViewById(R.id.recyclerViewPets);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        btnDenuncia = findViewById(R.id.btnDenuncia);
+        btnDenuncia.setOnClickListener(this);
+        btnAtualizar = findViewById(R.id.btnAtualizar);
+        btnAtualizar.setOnClickListener(this);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(this);
+        btnPet = findViewById(R.id.btnPet);
+        btnPet.setOnClickListener(this);
 
         // Configurar Retrofit
         Retrofit retrofit = new Retrofit.Builder()
@@ -119,6 +129,17 @@ public class PetListActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.btnDenuncia) {
+            DenunciaActivity.startDenunciaActivity(this);
+        }else if (v.getId() == R.id.btnAtualizar) {
+            MainActivity.startMainActivity(this);
+            Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
+        }
+        else if  (v.getId() == R.id.btnLogin) {
+            LoginActivity.startLoginActivity(this);
 
+        }else if (v.getId() == R.id.btnPet) {
+            PetListActivity.startPetListActivity(this);
+        }
     }
 }
