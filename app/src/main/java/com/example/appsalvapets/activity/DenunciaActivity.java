@@ -110,7 +110,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:80/")
+                .baseUrl("http://192.168.50.229:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
