@@ -57,7 +57,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Tipo de Usuário:" />
+            android:text="Tipo de Usuário:"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
+
+        <Spinner
+            android:id="@+id/spnTipoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/corner_cards"
+            android:padding="8dp"
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/txtSeleOng"
@@ -66,7 +80,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Selecione a ONG:"
-            android:visibility="gone" />
+            android:visibility="invisible"
+            tools:visibility="invisible" />
 
         <Spinner
             android:id="@+id/spnSeleOng"
@@ -75,7 +90,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:visibility="gone" />
+            android:visibility="invisible"
+            tools:visibility="invisible" />
 
     </LinearLayout>
 
