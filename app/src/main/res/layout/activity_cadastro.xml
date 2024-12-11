@@ -16,55 +16,40 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"
+        app:logo="@drawable/baseline_pets"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Cadastro - Salva Pets" />
-
-    <TextView
-        android:id="@+id/txtNomeUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Nome de Usuário:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginStart="16dp" />
+        app:title="  Cadastro - Salva Pets" />
 
     <EditText
         android:id="@+id/edtCadUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/corner_cards"
         android:hint="Informe seu nome de usuário"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtNomeUsuario" />
-
-    <TextView
-        android:id="@+id/txtSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Senha:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtCadUsuario"
-        android:layout_marginStart="16dp" />
+        tools:layout_editor_absoluteY="149dp" />
 
     <EditText
         android:id="@+id/edtCadSenha"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/corner_cards"
+        android:inputType="text"
         android:hint="Informe sua senha"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtSenha" />
+        tools:layout_editor_absoluteY="211dp" />
 
     <TextView
         android:id="@+id/txtTipoUsuario"
@@ -78,11 +63,14 @@
 
     <Spinner
         android:id="@+id/spnTipoUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/corner_cards"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTipoUsuario" />
@@ -92,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Selecionar a ONG:"
+        android:text="Selecione a ONG:"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spnTipoUsuario"
@@ -116,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Cadastrar"
+        android:backgroundTint="#304FFC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spnSeleOng" />
@@ -126,6 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Cancelar"
+        android:backgroundTint="#404040"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnCadUsuario" />
