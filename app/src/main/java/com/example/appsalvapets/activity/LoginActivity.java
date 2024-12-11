@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     private Retrofit retrofit;
     ServiceLogin serviceUsuario;
     Context context;
-    ImageButton  btnVoltar, btnDenuncia, btnPet;
+    ImageButton btnDenuncia, btnLogin, btnAtualizar, btnPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +61,14 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         btnCadastrarUsuario.setOnClickListener(this);
         edtUsuario = findViewById(R.id.edtUsuario);
         edtSenha = findViewById(R.id.edtSenha);
-        btnVoltar = findViewById(R.id.btnVoltar);
         btnDenuncia = findViewById(R.id.btnDenuncia);
-
-
-        btnVoltar.setOnClickListener(this);
         btnDenuncia.setOnClickListener(this);
+        btnAtualizar = findViewById(R.id.btnAtualizar);
+        btnAtualizar.setOnClickListener(this);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(this);
+        btnPet = findViewById(R.id.btnPet);
+        btnPet.setOnClickListener(this);
 
 
         retrofit = new Retrofit.Builder()
@@ -80,24 +82,19 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View view) {
-
-        if (view.getId() == R.id.btnEntrar) {
-            realizarLogin();
-        }else if (view.getId() == R.id.btnCadastrarUsuario) {
-            CadastroActivity.startCadastroActivity(this);
-        }
-
-        else if (view.getId() == R.id.btnVoltar) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        else if (view.getId() == R.id.btnDenuncia) {
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnDenuncia) {
             DenunciaActivity.startDenunciaActivity(this);
+        }else if (v.getId() == R.id.btnAtualizar) {
+            MainActivity.startMainActivity(this);
+            Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
         }
+        else if  (v.getId() == R.id.btnLogin) {
+            LoginActivity.startLoginActivity(this);
 
-
+        }else if (v.getId() == R.id.btnPet) {
+            PetListActivity.startPetListActivity(this);
+        }
     }
 
     private void realizarLogin() {

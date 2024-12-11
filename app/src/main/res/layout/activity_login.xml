@@ -97,46 +97,53 @@
 
 
     <LinearLayout
-        android:id="@+id/buttonContainer"
+        android:id="@+id/fixedButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
-            android:id="@+id/btnVoltar"
+            android:id="@+id/btnAtualizar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/main_atualizar"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_voltar_home" />
-
+            android:src="@drawable/baseline_main_atualizar" />
 
         <ImageButton
             android:id="@+id/btnDenuncia"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/denuncia"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_denuncia" />
-
 
         <ImageButton
             android:id="@+id/btnPet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/btnpets"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_pets" />
 
+        <ImageButton
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/corner_menu"
+            android:contentDescription="@string/login"
+            android:padding="10dp"
+            android:src="@drawable/baseline_login_cadastro" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

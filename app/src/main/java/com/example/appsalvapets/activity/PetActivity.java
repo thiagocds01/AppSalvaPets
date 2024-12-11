@@ -293,7 +293,7 @@ public class PetActivity extends AppCompatActivity implements View.OnClickListen
             LoginActivity.startLoginActivity(this);
 
         }else if (v.getId() == R.id.btnPet) {
-            PetActivity.startPetActivity(this);
+            PetListActivity.startPetListActivity(this);
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,12 +24,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PetListActivity extends AppCompatActivity {
+public class PetListActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private PetAdapter adapter;
     private List<Pet> petList = new ArrayList<>();
     private PetService petService;
+    ImageButton btnDenuncia, btnLogin, btnAtualizar, btnPet;
+
 
     public static void startPetListActivity(Context context) {
         Intent intent = new Intent(context, PetListActivity.class);
@@ -46,7 +49,7 @@ public class PetListActivity extends AppCompatActivity {
 
         // Configurar Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.100.74:80/")
+                .baseUrl("http://192.168.0.102:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         petService = retrofit.create(PetService.class);
@@ -112,5 +115,10 @@ public class PetListActivity extends AppCompatActivity {
                 // Tratar falha
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

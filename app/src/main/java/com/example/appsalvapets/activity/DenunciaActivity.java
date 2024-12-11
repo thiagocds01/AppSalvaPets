@@ -141,7 +141,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
             LoginActivity.startLoginActivity(this);
         }
         else if (v.getId() == R.id.btnPet) {
-            PetActivity.startPetActivity(this);
+            PetListActivity.startPetListActivity(this);
         }
 
     }
