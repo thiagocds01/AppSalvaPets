@@ -15,10 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Salva Pets" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:logo="@drawable/baseline_pets"
+        app:title="  Realizar Login"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -88,7 +89,7 @@
         android:id="@+id/btnCadastrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="20dp"
         android:text="Cadastre-se"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

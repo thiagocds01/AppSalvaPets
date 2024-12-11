@@ -4,18 +4,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appsalvapets.R;
 import com.example.appsalvapets.model.Pet;
 
-public class DetalhesPetActivity extends AppCompatActivity {
+public class DetalhesPetActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView textViewNome, textViewRaca, textViewIdade, textViewPorte, textViewSexo, textViewCor, textViewHistoria;
     private ImageView imageViewPet;
+    ImageButton btnDenuncia, btnLogin,btnAtualizar, btnPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,14 @@ public class DetalhesPetActivity extends AppCompatActivity {
         textViewCor = findViewById(R.id.tv_cor);
         textViewHistoria = findViewById(R.id.tv_historia);
         imageViewPet = findViewById(R.id.imageViewDetalhesPet);
+        btnDenuncia = findViewById(R.id.btnDenuncia);
+        btnDenuncia.setOnClickListener(this);
+        btnAtualizar = findViewById(R.id.btnAtualizar);
+        btnAtualizar.setOnClickListener(this);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(this);
+        btnPet = findViewById(R.id.btnPet);
+        btnPet.setOnClickListener(this);
 
         // Receber o objeto Pet da Intent
         Pet pet = (Pet) getIntent().getSerializableExtra("pet");
@@ -51,6 +63,22 @@ public class DetalhesPetActivity extends AppCompatActivity {
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 imageViewPet.setImageBitmap(decodedByte);
             }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnDenuncia) {
+            DenunciaActivity.startDenunciaActivity(this);
+        }else if (v.getId() == R.id.btnAtualizar) {
+            MainActivity.startMainActivity(this);
+            Toast.makeText(this, "Atualizando lista de pets...", Toast.LENGTH_SHORT).show();
+        }
+        else if  (v.getId() == R.id.btnLogin) {
+            LoginActivity.startLoginActivity(this);
+
+        }else if (v.getId() == R.id.btnPet) {
+            PetListActivity.startPetListActivity(this);
         }
     }
 }

@@ -12,9 +12,9 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/baseline_pets"
-        app:title="  Gerenciar Pets"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:title="  Gerenciar Pets" />
 
     <!-- RecyclerView -->
 
@@ -22,25 +22,20 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPets"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/btnAddPet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.065">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/btnAddPet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="544dp"
+        android:layout_height="48dp"
         android:text="Adicionar Pet"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/fixedButtons"
         tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
