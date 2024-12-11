@@ -67,8 +67,13 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        txtSeleOng = findViewById(R.id.txtSeleOng);
         edtCadUsuario = findViewById(R.id.edtCadUsuario);
         edtCadSenha = findViewById(R.id.edtCadSenha);
+        spnTipoUsuario = findViewById(R.id.spnTipoUsuario);
+        spnSeleOng = findViewById(R.id.spnSeleOng);
         btnCadUsuario = findViewById(R.id.btnCadUsuario);
         btnCadUsuario.setOnClickListener(this);
         btnCadCancelar = findViewById(R.id.btnCadCancelar);
